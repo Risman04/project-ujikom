@@ -11,4 +11,9 @@ class SatuanBarang extends Model
     public $fillable = ['satuan_barang'];
 
     public $timestamps = true;
+
+    public function databarang()
+    {
+        return $this->hasOne(DataBarang::class, 'id_barang');
+    }
 }

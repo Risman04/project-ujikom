@@ -15,8 +15,17 @@ return new class extends Migration
     {
         Schema::create('data_barangs', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('id_barang');
+            $table->string('nama_barang');
+            $table->string('jenis_barang');
+            $table->integer('jumlah_barang');
+            $table->string('satuan');
             $table->timestamps();
+
+            $table->foreign('id_barang')->references('id')->on('jenisbarangs')
+                ->onDelete('cascade');
+            $table->foreign('id_barang')->references('id')->on('satuanbarangs')
+                ->onDelete('cascade');
         });
     }
 

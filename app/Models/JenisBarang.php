@@ -11,4 +11,10 @@ class JenisBarang extends Model
     public $fillable = ['jenis_barang'];
 
     public $timestamps = true;
+
+    public function databarang()
+    {
+        return $this->hasOne(DataBarang::class, 'id_barang');
+    }
+
 }
