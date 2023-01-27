@@ -22,7 +22,7 @@
                  <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="http://127.0.0.1:8000/home" class="nav-link">
+                    <a href="home" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -31,7 +31,7 @@
                     </a>
                 </li>
                     <span style="display: block; background-color:white; height: 1px; width:95%; margin: auto;"></span>
-                    <b style="color: white; margin: 10px 10px 10px 20px;">Pilih Menu</b>
+                    <b style="color: white; margin: 10px 10px 10px 20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Pilih Menu</b>
                 <li class="nav-item">
                     <a href="{{ route('user.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-alt"></i>
@@ -42,39 +42,44 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                      <i class="nav-icon fas fa-tachometer-alt"></i>
-                      <p>
-                        Data Master
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      {{-- Menu Pilihan --}}
+                  <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Data Master
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    {{-- Menu Pilihan --}}
                     <li class="nav-item">
                         <a href="{{ route('jenis.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
+                          <i class="fa fa-clipboard-check"></i>
+                            <p style="margin-left: 10px">
                                 Jenis Barang
                                 {{-- <i class="right fas fa-angle-left"></i> --}}
                             </p>
                         </a>
                     </li>
-                      <li class="nav-item">
-                        <a href="./index2.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Dashboard v2</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="./index3.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Dashboard v3</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-             </ul>
+                    <li class="nav-item">
+                      <a href="{{ route('satuan.index') }}" class="nav-link">
+                        <i class="fa fa-clipboard-check"></i>
+                          <p style="margin-left: 10px">
+                              Satuan Barang
+                              {{-- <i class="right fas fa-angle-left"></i> --}}
+                          </p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('supplier.index') }}" class="nav-link">
+                        <i class="fa fa-clipboard-check"></i>
+                          <p style="margin-left: 10px">
+                              Data Supplier
+                              {{-- <i class="right fas fa-angle-left"></i> --}}
+                          </p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
          </nav>
          <!-- /.sidebar-menu -->
      </div>

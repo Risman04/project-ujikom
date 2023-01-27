@@ -107,6 +107,6 @@ class JenisBarangController extends Controller
         $jenis = JenisBarang::findOrFail($id);
         $jenis->delete();
         return redirect()->route('jenis.index')
-            ->with('success', 'Data berhasil dihapus!');
+            ->with('danger', 'Data berhasil dihapus!');
     }
 }

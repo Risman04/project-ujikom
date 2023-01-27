@@ -7,8 +7,8 @@
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Jenis Barang
-                        <a href="{{ route('jenis.create') }}" class="btn btn-sm btn-primary" style="float: right">
+                        Satuan Barang
+                        <a href="{{ route('satuan.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
                     </div>
@@ -19,21 +19,21 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Jenis Barang</th>
+                                        <th>Satuan Barang</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($jenis as $data)
+                                    @foreach ($satuan as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->jenis_barang }}</td>
+                                            <td>{{ $data->satuan_barang }}</td>
                                             <td>
-                                                <form action="{{ route('jenis.destroy', $data->id) }}" method="post">
+                                                <form action="{{ route('satuan.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('jenis.edit', $data->id) }}"
+                                                    <a href="{{ route('satuan.edit', $data->id) }}"
                                                         class="btn btn-sm btn-outline-warning">
                                                         Edit
                                                     </a>

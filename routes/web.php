@@ -7,6 +7,8 @@ use App\Http\Controllers\LayoutController;
 
 use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\SatuanBarangController;
+use App\Http\Controllers\DataSupplierController;
 
 
 /*
@@ -46,12 +48,14 @@ Route::group(['middleware' => ['auth']], function()
         //item
         Route::resource('user', DataUserController::class);
         Route::resource('jenis', JenisBarangController::class);
+        Route::resource('satuan', SatuanBarangController::class);
+        Route::resource('supplier', DataSupplierController::class);
     });
 
     //Bagian Admin
     Route::group(['middleware' => [CekUserLogin::class]], function()
     {
-        
+        Route::resource('user', DataUserController::class);
     });
 
     //Bagian Karyawan

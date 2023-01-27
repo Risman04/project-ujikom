@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataSupplier;
 use Illuminate\Http\Request;
-use App\Models\User;
 
-
-class DataUserController extends Controller
+class DataSupplierController extends Controller
 {
     public function __construct()
     {
@@ -19,8 +18,8 @@ class DataUserController extends Controller
      */
     public function index()
     {
-        $user= User::all();
-        return view('user.index' , compact('user'));
+        $supplier= DataSupplier::all();
+        return view('supplier.index' , compact('supplier'));
     }
 
     /**
@@ -30,7 +29,7 @@ class DataUserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('supplier.create');
     }
 
     /**
@@ -43,30 +42,26 @@ class DataUserController extends Controller
     {
         // validasi
         $validated = $request->validate([
-            'nik' => 'required',
-            'name' => 'required',
+            'kode_supplier' => 'required',
+            'nama_supplier' => 'required',
+            'alamat' => 'required',
             'telepon' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'level' => 'required'
         ]);
 
-        $user = new User();
-        $user->nik = $request->nik;
-        $user->name = $request->name;
-        $user->telepon = $request->telepon;
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->level = $request->level;
-        $user->save();
-        return redirect()->route('user.index')
+        $supplier = new DataSupplier();
+        $supplier->kode_supplier = $request->kode_supplier;
+        $supplier->nama_supplier = $request->nama_supplier;
+        $supplier->alamat = $request->alamat;
+        $supplier->telepon = $request->telepon;
+        $supplier->save();
+        return redirect()->route('supplier.index')
             ->with('success', 'Data berhasil dibuat!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\DataSupplier  $dataSupplier
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -77,57 +72,53 @@ class DataUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\DataSupplier  $dataSupplier
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('user.edit', compact('user'));
+        $supplier = DataSupplier::findOrFail($id);
+        return view('supplier.edit', compact('supplier'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\DataSupplier  $dataSupplier
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         // validasi
         $validated = $request->validate([
-            'nik' => 'required',
-            'name' => 'required',
+            'kode_supplier' => 'required',
+            'nama_supplier' => 'required',
+            'alamat' => 'required',
             'telepon' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'level' => 'required'
         ]);
 
-        $user = User::findOrFail($id);
-        $user->nik = $request->nik;
-        $user->name = $request->name;
-        $user->telepon = $request->telepon;
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->level = $request->level;
-        $user->save();
-        return redirect()->route('user.index')
+        $supplier = DataSupplier::findOrFail($id);
+        $supplier->kode_supplier = $request->kode_supplier;
+        $supplier->nama_supplier = $request->nama_supplier;
+        $supplier->alamat = $request->alamat;
+        $supplier->telepon = $request->telepon;
+        $supplier->save();
+        return redirect()->route('supplier.index')
             ->with('success', 'Data berhasil diedit!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\DataSupplier  $dataSupplier
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('user.index')
+        $supplier = DataSupplier::findOrFail($id);
+        $supplier->delete();
+        return redirect()->route('supplier.index')
             ->with('danger', 'Data berhasil dihapus!');
     }
 }

@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\SatuanBarang;
 
-
-class DataUserController extends Controller
+class SatuanBarangController extends Controller
 {
-    public function __construct()
+    public function _construct()
     {
         $this->middleware('auth');
     }
@@ -19,8 +18,8 @@ class DataUserController extends Controller
      */
     public function index()
     {
-        $user= User::all();
-        return view('user.index' , compact('user'));
+        $satuan= SatuanBarang::all();
+        return view('satuan.index' , compact('satuan'));
     }
 
     /**
@@ -30,7 +29,7 @@ class DataUserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('satuan.create');
     }
 
     /**
@@ -43,23 +42,13 @@ class DataUserController extends Controller
     {
         // validasi
         $validated = $request->validate([
-            'nik' => 'required',
-            'name' => 'required',
-            'telepon' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'level' => 'required'
+            'satuan_barang' => 'required',
         ]);
 
-        $user = new User();
-        $user->nik = $request->nik;
-        $user->name = $request->name;
-        $user->telepon = $request->telepon;
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->level = $request->level;
-        $user->save();
-        return redirect()->route('user.index')
+        $satuan = new SatuanBarang();
+        $satuan->satuan_barang = $request->satuan_barang;
+        $satuan->save();
+        return redirect()->route('satuan.index')
             ->with('success', 'Data berhasil dibuat!');
     }
 
@@ -82,8 +71,8 @@ class DataUserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('user.edit', compact('user'));
+        $satuan = SatuanBarang::findOrFail($id);
+        return view('satuan.edit', compact('satuan'));
     }
 
     /**
@@ -95,25 +84,15 @@ class DataUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // validasi
-        $validated = $request->validate([
-            'nik' => 'required',
-            'name' => 'required',
-            'telepon' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'level' => 'required'
+         // validasi
+         $validated = $request->validate([
+            'satuan_barang' => 'required',
         ]);
 
-        $user = User::findOrFail($id);
-        $user->nik = $request->nik;
-        $user->name = $request->name;
-        $user->telepon = $request->telepon;
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->level = $request->level;
-        $user->save();
-        return redirect()->route('user.index')
+        $satuan = SatuanBarang::findOrFail($id);
+        $satuan->satuan_barang = $request->satuan_barang;
+        $satuan->save();
+        return redirect()->route('satuan.index')
             ->with('success', 'Data berhasil diedit!');
     }
 
@@ -125,9 +104,9 @@ class DataUserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('user.index')
+        $satuan = SatuanBarang::findOrFail($id);
+        $satuan->delete();
+        return redirect()->route('satuan.index')
             ->with('danger', 'Data berhasil dihapus!');
     }
 }
