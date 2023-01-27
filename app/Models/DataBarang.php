@@ -8,18 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DataBarang extends Model
 {
     use HasFactory;
-    public $fillable = ['id_barang', 'nama_barang', 'jenis_barang', 'jumlah_barang', 'satuan'];
+    public $fillable = ['id','kode_barang', 'nama_barang', 'id_jenis_barang', 'jumlah_barang', 'id_satuan_barang'];
 
     public $timestamps = true;
-
-    public function jenisbarang()
-    {
-        return $this->belongsTo(JenisBarang::class, 'id_barang');
-    }
-
-    public function satuanbarang()
-    {
-        return $this->belongsTo(SatuanBarang::class, 'id_barang');
-    }
-
 }

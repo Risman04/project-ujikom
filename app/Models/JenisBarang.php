@@ -14,7 +14,7 @@ class JenisBarang extends Model
 
     public function databarang()
     {
-        return $this->hasOne(DataBarang::class, 'id_barang');
+        return $this->hasOne(DataBarang::class, 'id_jenis');
     }
 
 }

@@ -15,17 +15,17 @@ return new class extends Migration
     {
         Schema::create('data_barangs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_barang');
+            $table->string('kode_barang');
             $table->string('nama_barang');
-            $table->string('jenis_barang');
+            $table->unsignedBigInteger('id_jenis_barang');
             $table->integer('jumlah_barang');
-            $table->string('satuan');
+            $table->unsignedBigInteger('id_satuan_barang');
+            
+            $table->foreign('id_jenis_barang')->references('id')->on('jenis_barangs')
+            ->onDelete('cascade');
+            $table->foreign('id_satuan_barang')->references('id')->on('satuan_barangs')
+            ->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('id_barang')->references('id')->on('jenisbarangs')
-                ->onDelete('cascade');
-            $table->foreign('id_barang')->references('id')->on('satuanbarangs')
-                ->onDelete('cascade');
         });
     }
 
