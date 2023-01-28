@@ -109,14 +109,15 @@ class DataBarangController extends Controller
         ]);
 
         $databarang = DataBarang::findOrFail($id);
-        $databarang = JenisBarang::findOrFail($id);
-        $databarang = SatuanBarang::findOrFail($id);
+        $jenis = JenisBarang::findOrFail($id);
+        $satuan = SatuanBarang::findOrFail($id);
         $databarang->kode_barang = $request->kode_barang;
         $databarang->nama_barang = $request->nama_barang;
         $databarang->id_jenis_barang = $request->id_jenis_barang;
         $databarang->jumlah_barang = $request->jumlah_barang;
         $databarang->id_satuan_barang = $request->id_satuan_barang;
         $databarang->save();
+        
         return redirect()->route('databarang.index')
             ->with('success', 'Data berhasil diedit!');
     }
