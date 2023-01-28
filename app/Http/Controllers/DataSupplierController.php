@@ -119,6 +119,6 @@ class DataSupplierController extends Controller
         $supplier = DataSupplier::findOrFail($id);
         $supplier->delete();
         return redirect()->route('supplier.index')
-            ->with('danger', 'Data berhasil dihapus!');
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

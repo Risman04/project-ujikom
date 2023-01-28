@@ -7,8 +7,8 @@
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Data Pengguna
-                        <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary" style="float: right">
+                        Data Barang
+                        <a href="{{ route('databarang.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
                     </div>
@@ -19,29 +19,30 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>NIK</th>
-                                        <th>Nama</th>
-                                        <th>Telepon</th>
-                                        <th>Username</th>
-                                        <th>Level</th>
+                                        <th>Kode Barang</th>
+                                        <th>Nama Barang</th>
+                                        <th>Jenis Barang</th>
+                                        <th>Jumlah Barang</th>
+                                        <th>Satuan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($user as $data)
+                                    @foreach ($databarang as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->nik }}</td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ $data->telepon }}</td>
-                                            <td>{{ $data->username }}</td>
-                                            <td>{{ $data->level }}</td>
+                                            <td>{{ $data->kode_barang }}</td>
+                                            <td>{{ $data->nama_barang }}</td>
+                                            <td>{{ $data->JenisBarang->nama_jenis_barang ?? "" }}</td>
+                                            <td>{{ $data->jumlah_barang }}</td>
+                                            <td>{{ $data->SatuanBarang->nama_satuan_barang ?? ""}}</td>
+
                                             <td>
-                                                <form action="{{ route('user.destroy', $data->id) }}" method="post">
+                                                <form action="{{ route('databarang.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('user.edit', $data->id) }}"
+                                                    <a href="{{ route('databarang.edit', $data->id) }}"
                                                         class="btn btn-sm btn-outline-warning">
                                                         Edit
                                                     </a>

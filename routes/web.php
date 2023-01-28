@@ -9,6 +9,7 @@ use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\DataSupplierController;
+use App\Http\Controllers\DataBarangController;
 
 
 /*
@@ -47,6 +48,7 @@ Route::group(['middleware' => ['auth']], function()
         Route::resource('about', LayoutController::class);
         //item
         Route::resource('user', DataUserController::class);
+        Route::resource('databarang', DataBarangController::class);
         Route::resource('jenis', JenisBarangController::class);
         Route::resource('satuan', SatuanBarangController::class);
         Route::resource('supplier', DataSupplierController::class);

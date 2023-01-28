@@ -128,6 +128,6 @@ class DataUserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('user.index')
-            ->with('danger', 'Data berhasil dihapus!');
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

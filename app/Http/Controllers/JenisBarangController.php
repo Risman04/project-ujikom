@@ -42,11 +42,11 @@ class JenisBarangController extends Controller
     {
         // validasi
         $validated = $request->validate([
-            'jenis_barang' => 'required',
+            'nama_jenis_barang' => 'required',
         ]);
 
         $jenis = new JenisBarang();
-        $jenis->jenis_barang = $request->jenis_barang;
+        $jenis->nama_jenis_barang = $request->nama_jenis_barang;
         $jenis->save();
         return redirect()->route('jenis.index')
             ->with('success', 'Data berhasil dibuat!');
@@ -86,11 +86,11 @@ class JenisBarangController extends Controller
     {
         //// validasi
         $validated = $request->validate([
-            'jenis_barang' => 'required',
+            'nama_jenis_barang' => 'required',
         ]);
 
         $jenis = JenisBarang::findOrFail($id);
-        $jenis->jenis_barang = $request->jenis_barang;
+        $jenis->nama_jenis_barang = $request->nama_jenis_barang;
         $jenis->save();
         return redirect()->route('jenis.index')
             ->with('success', 'Data berhasil dibuat!');
@@ -107,6 +107,6 @@ class JenisBarangController extends Controller
         $jenis = JenisBarang::findOrFail($id);
         $jenis->delete();
         return redirect()->route('jenis.index')
-            ->with('danger', 'Data berhasil dihapus!');
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

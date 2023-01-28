@@ -28,7 +28,7 @@
                                     @foreach ($satuan as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->satuan_barang }}</td>
+                                            <td>{{ $data->nama_satuan_barang }}</td>
                                             <td>
                                                 <form action="{{ route('satuan.destroy', $data->id) }}" method="post">
                                                     @csrf

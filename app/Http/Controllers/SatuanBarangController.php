@@ -42,11 +42,11 @@ class SatuanBarangController extends Controller
     {
         // validasi
         $validated = $request->validate([
-            'satuan_barang' => 'required',
+            'nama_satuan_barang' => 'required',
         ]);
 
         $satuan = new SatuanBarang();
-        $satuan->satuan_barang = $request->satuan_barang;
+        $satuan->nama_satuan_barang = $request->nama_satuan_barang;
         $satuan->save();
         return redirect()->route('satuan.index')
             ->with('success', 'Data berhasil dibuat!');
@@ -86,11 +86,11 @@ class SatuanBarangController extends Controller
     {
          // validasi
          $validated = $request->validate([
-            'satuan_barang' => 'required',
+            'nama_satuan_barang' => 'required',
         ]);
 
         $satuan = SatuanBarang::findOrFail($id);
-        $satuan->satuan_barang = $request->satuan_barang;
+        $satuan->nama_satuan_barang = $request->nama_satuan_barang;
         $satuan->save();
         return redirect()->route('satuan.index')
             ->with('success', 'Data berhasil diedit!');
@@ -107,6 +107,6 @@ class SatuanBarangController extends Controller
         $satuan = SatuanBarang::findOrFail($id);
         $satuan->delete();
         return redirect()->route('satuan.index')
-            ->with('danger', 'Data berhasil dihapus!');
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

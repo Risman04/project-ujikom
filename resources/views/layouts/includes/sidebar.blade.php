@@ -43,14 +43,23 @@
                 </li>
                 <li class="nav-item menu-open">
                   <a href="#" class="nav-link active">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
+                    <i class="fa fa-database"></i>
+                    <p style="margin-left: 10px">
                       Data Master
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
                     {{-- Menu Pilihan --}}
+                    <li class="nav-item">
+                      <a href="{{ route('databarang.index') }}" class="nav-link">
+                        <i class="fa fa-clipboard-check"></i>
+                          <p style="margin-left: 10px">
+                              Data Barang
+                              {{-- <i class="right fas fa-angle-left"></i> --}}
+                          </p>
+                      </a>
+                  </li>
                     <li class="nav-item">
                         <a href="{{ route('jenis.index') }}" class="nav-link">
                           <i class="fa fa-clipboard-check"></i>
@@ -78,6 +87,19 @@
                           </p>
                       </a>
                     </li>
+                  </ul>
+                </li>
+                <li class="nav-item menu-open">
+                  <a href="#" class="nav-link active">
+                    <i class="fa fa-wallet"></i>
+                    <p style="margin-left: 10px">
+                      Transaksi
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    {{-- Menu Pilihan --}}
+                    
                   </ul>
                 </li>
          </nav>

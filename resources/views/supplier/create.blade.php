@@ -34,7 +34,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Alamat</label>
-                                <input type="textarea" class="form-control  @error('alamat') is-invalid @enderror"
+                                <input type="   " class="form-control  @error('alamat') is-invalid @enderror"
                                     name="alamat">
                                 @error('alamat')
                                     <span class="invalid-feedback" role="alert">

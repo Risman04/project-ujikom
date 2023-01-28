@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class JenisBarang extends Model
 {
     use HasFactory;
-    public $fillable = ['jenis_barang'];
+    public $fillable = ['nama_jenis_barang'];
 
     public $timestamps = true;
 
-    public function databarang()
+    public function DataBarang()
     {
-        return $this->hasOne(DataBarang::class, 'id_jenis');
+        return $this->hasMany(DataBarang::class, 'id_jenis_barang');
     }
 
 }
