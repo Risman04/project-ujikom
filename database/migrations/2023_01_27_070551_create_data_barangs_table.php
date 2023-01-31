@@ -18,12 +18,14 @@ return new class extends Migration
             $table->string('kode_barang');
             $table->string('nama_barang');
             $table->unsignedBigInteger('id_jenis_barang');
-            $table->integer('jumlah_barang');
+            $table->unsignedBigInteger('id_jumlah_barang');
             $table->unsignedBigInteger('id_satuan_barang');
             
             $table->foreign('id_jenis_barang')->references('id')->on('jenis_barangs')
             ->onDelete('cascade');
             $table->foreign('id_satuan_barang')->references('id')->on('satuan_barangs')
+            ->onDelete('cascade');
+            $table->foreign('id_jumlah_barang')->references('id')->on('barang_masuks')
             ->onDelete('cascade');
             $table->timestamps();
         });

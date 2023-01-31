@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Models\JenisBarang;
 use App\Models\SatuanBarang;
+use App\Models\BarangMasuk;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DataBarang extends Model
 {
     use HasFactory;
-    public $fillable = ['kode_barang', 'nama_barang', 'id_jenis_barang', 'jumlah_barang', 'id_satuan_barang'];
+    public $fillable = ['kode_barang', 'nama_barang', 'id_jenis_barang', 'id_jumlah_barang', 'id_satuan_barang'];
 
     public $timestamps = true;
 
@@ -22,5 +23,20 @@ class DataBarang extends Model
     public function SatuanBarang()
     {
         return $this->belongsTo(SatuanBarang::class, 'id_satuan_barang');
+    }
+
+    public function BarangMasuk()
+    {
+        return $this->belongsTo(BarangMasuk::class, 'id_jumlah_barang');
+    }
+
+    public function BarangMasukKode()
+    {
+        return $this->hasMany(BarangMasuk::class, 'id_kode_barang');
+    }
+
+    public function BarangMasukNama()
+    {
+        return $this->hasMany(BarangMasuk::class, 'id_nama_barang');
     }
 }
