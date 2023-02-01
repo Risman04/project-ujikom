@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\DataBarang;
 use App\Models\JenisBarang;
 use App\Models\SatuanBarang;
+use App\Models\BarangMasuk;
 
 
 class DataBarangController extends Controller
@@ -34,7 +35,8 @@ class DataBarangController extends Controller
     {
         $jenis = JenisBarang::all();
         $satuan = SatuanBarang::all();
-        return view('databarang.create', compact('jenis', 'satuan'));
+        $masuk = BarangMasuk::all();
+        return view('databarang.create', compact('jenis', 'satuan', 'masuk'));
     }
 
     /**
@@ -50,7 +52,7 @@ class DataBarangController extends Controller
             'kode_barang' => 'required',
             'nama_barang' => 'required',
             'id_jenis_barang' => 'required',
-            'jumlah_barang' => 'required',
+            'id_jumlah_barang' => 'required',
             'id_satuan_barang' => 'required',
         ]);
 
@@ -58,7 +60,7 @@ class DataBarangController extends Controller
         $databarang->kode_barang = $request->kode_barang;
         $databarang->nama_barang = $request->nama_barang;
         $databarang->id_jenis_barang = $request->id_jenis_barang;
-        $databarang->jumlah_barang = $request->jumlah_barang;
+        $databarang->id_jumlah_barang = $request->id_jumlah_barang;
         $databarang->id_satuan_barang = $request->id_satuan_barang;
         $databarang->save();
         return redirect()->route('databarang.index')
@@ -87,7 +89,8 @@ class DataBarangController extends Controller
         $databarang = DataBarang::findOrFail($id);
         $jenis = JenisBarang::all();
         $satuan = SatuanBarang::all();
-        return view('databarang.edit', compact('databarang', 'jenis', 'satuan'));
+        $masuk = BarangMasuk::all();
+        return view('databarang.edit', compact('databarang', 'jenis', 'satuan', 'masuk'));
     }
 
     /**
@@ -104,7 +107,7 @@ class DataBarangController extends Controller
             'kode_barang' => 'required',
             'nama_barang' => 'required',
             'id_jenis_barang' => 'required',
-            'jumlah_barang' => 'required',
+            'id_jumlah_barang' => 'required',
             'id_satuan_barang' => 'required',
         ]);
 
@@ -114,7 +117,7 @@ class DataBarangController extends Controller
         $databarang->kode_barang = $request->kode_barang;
         $databarang->nama_barang = $request->nama_barang;
         $databarang->id_jenis_barang = $request->id_jenis_barang;
-        $databarang->jumlah_barang = $request->jumlah_barang;
+        $databarang->id_jumlah_barang = $request->id_jumlah_barang;
         $databarang->id_satuan_barang = $request->id_satuan_barang;
         $databarang->save();
         

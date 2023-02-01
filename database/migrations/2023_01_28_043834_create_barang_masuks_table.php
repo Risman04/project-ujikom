@@ -17,17 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('id_transaksi');
             $table->date('tanggal_masuk');
-            $table->unsignedBigInteger('id_kode_barang');
-            $table->unsignedBigInteger('id_nama_barang');
+            $table->unsignedBigInteger('id_data_barang');
             $table->string('pengirim');
             $table->integer('jumlah_barang');
             $table->unsignedBigInteger('id_satuan_barang');
             
             $table->foreign('id_satuan_barang')->references('id')->on('satuan_barangs')
             ->onDelete('cascade');
-            $table->foreign('id_kode_barang')->references('id')->on('data_barangs')
-            ->onDelete('cascade');
-            $table->foreign('id_nama_barang')->references('id')->on('data_barangs')
+            $table->foreign('id_data_barang')->references('id')->on('data_barangs')
             ->onDelete('cascade');
 
             $table->timestamps();

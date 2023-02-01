@@ -43,7 +43,7 @@ Route::controller(LoginController::class)->group(function(){
 Route::group(['middleware' => ['auth']], function()
 {
     // Bagian Super Admin 
-    Route::group(['middleware' => ['CekUserLogin:1']], function()
+    Route::group(['middleware' => [CekUserLogin::class]], function()
     {
         Route::resource('about', LayoutController::class);
         //item
@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth']], function()
     });
 
     //Bagian Admin
-    Route::group(['middleware' => ['CekUserLogin:2']], function()
+    Route::group(['middleware' => [CekUserLogin::class]], function()
     {
         Route::resource('about', LayoutController::class);
         //item
@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth']], function()
     });
 
     //Bagian Karyawan
-    Route::group(['middleware' => ['CekUserLogin:3']], function()
+    Route::group(['middleware' => [CekUserLogin::class]], function()
     {
 
     });

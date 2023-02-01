@@ -25,8 +25,6 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->foreign('id_satuan_barang')->references('id')->on('satuan_barangs')
             ->onDelete('cascade');
-            $table->foreign('id_jumlah_barang')->references('id')->on('barang_masuks')
-            ->onDelete('cascade');
             $table->timestamps();
         });
     }

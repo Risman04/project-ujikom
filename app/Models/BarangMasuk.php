@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class BarangMasuk extends Model
 {
     use HasFactory;
-    public $fillable = ['id_transaksi', 'tanggal_masuk','id_kode_barang', 'id_nama_barang', 'pengirim', 'jumlah_barang', 'id_satuan_barang'];
+    public $fillable = ['id_transaksi', 'tanggal_masuk', 'id_data_barang', 'pengirim', 'jumlah_barang', 'id_satuan_barang'];
 
     public $timestamps = true;
 
@@ -18,15 +18,11 @@ class BarangMasuk extends Model
         return $this->hasMany(DataBarang::class, 'id_jumlah_barang');
     }
 
-    public function DataBarangKode()
+    public function DataBarang2()
     {
-        return $this->belongsTo(DataBarang::class, 'id_kode_barang');
+        return $this->belongsTo(DataBarang::class, 'id_data_barang');
     }
 
-    public function DataBarangNama()
-    {
-        return $this->belongsTo(DataBarang::class, 'id_nama_barang');
-    }
 
     public function SatuanBarang()
     {
