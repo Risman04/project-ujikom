@@ -34,11 +34,12 @@
                                                     @csrf
                                                     @method('delete')
                                                     <a href="{{ route('satuan.edit', $data->id) }}"
-                                                        class="btn btn-sm btn-outline-warning">
+                                                        class="btn btn-sm btn-outline-warning" style="border-radius: 20px">
                                                         Edit
                                                     </a>
                                                     <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                        onclick="return confirm('Apakah Anda Yakin?')">Delete
+                                                        onclick="return confirm('Apakah Anda Yakin?')" style="border-radius: 20px">
+                                                        Delete
                                                     </button>
                                                 </form>
                                             </td>

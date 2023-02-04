@@ -3,21 +3,30 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Data Barang
+                        Data Barang Masuk
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('databarang.update', $databarang->id) }}" method="post">
+                        <form action="{{ route('barangmasuk.store') }}" method="post">
                             @csrf
-                            @method('put')
                             <div class="mb-3">
-                                <label class="form-label">Kode Barang</label>
-                                <input type="text" class="form-control  @error('kode_barang') is-invalid @enderror"
-                                    name="kode_barang" value="{{ $databarang->kode_barang }}">
-                                @error('kode_barang')
+                                <label class="form-label">Id Transaksi</label>
+                                <input type="text" class="form-control  @error('id_transaksi') is-invalid @enderror"
+                                    name="id_transaksi">
+                                @error('id_transaksi')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Tanggal Masuk</label>
+                                <input type="date" class="form-control  @error('tanggal_masuk') is-invalid @enderror"
+                                    name="tanggal_masuk">
+                                @error('tanggal_masuk')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -25,39 +34,36 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nama Barang</label>
-                                <input type="text" class="form-control  @error('nama_barang') is-invalid @enderror"
-                                    name="nama_barang" value="{{ $databarang->nama_barang }}">
-                                @error('nama_barang')
+                                <select name="id_data_barang" class="form-control @error('id_data_barang') is-invalid @enderror" id="">
+                                    @foreach($databarang as $data)
+                                        <option value="{{ $data->id }}">{{ $data->kode_barang | $data->nama_barang }}</option>
+                                    @endforeach
+                                @error('id_data_barang')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Pengirim</label>
+                                <input type="text" class="form-control  @error('pengirim') is-invalid @enderror"
+                                    name="pengirim">
+                                @error('pengirim')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Jenis Barang</label>
-                                <select name="id_jenis_barang" class="form-control @error('id_jenis_barang') is-invalid @enderror" id="">
-                                    @foreach($jenis as $data)
-                                        <option value="{{ $data->id }}">{{ $data->nama_jenis_barang }}</option>
-                                    @endforeach
-                                @error('id_jenis_barang')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                                </select>
-                            </div>
-                            <div class="mb-3">
                                 <label class="form-label">Jumlah Barang</label>
-                                <select name="id_jumlah_barang" class="form-control @error('id_jumlah_barang') is-invalid @enderror" id="">
-                                    @foreach($masuk as $data)
-                                        <option value="{{ $data->id }}">{{ $data->jumlah_barang }}</option>
-                                    @endforeach
-                                @error('id_jumlah_barang')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <input type="number" class="form-control  @error('jumlah_barang') is-invalid @enderror"
+                                    name="jumlah_barang">
+                                @error('jumlah_barang')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
-                                </select>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Satuan</label>

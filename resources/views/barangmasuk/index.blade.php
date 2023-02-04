@@ -3,12 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-14">
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Data Barang
-                        <a href="{{ route('databarang.create') }}" class="btn btn-sm btn-primary" style="float: right">
+                        Data Barang Masuk
+                        <a href="{{ route('barangmasuk.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
                     </div>
@@ -19,23 +19,30 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Id Transaksi</th>
+                                        <th>Tanggal Masuk</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
-                                        <th>Jenis Barang</th>
+                                        <th>Pengirim</th>
                                         <th>Jumlah Barang</th>
-                                        <th>Satuan</th>
+                                        <th>Satuan Barang</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach ($databarang as $data)
+                                    @php 
+                                        $no = 1; 
+                                        $id_transaksi = 000001
+                                    @endphp
+                                    @foreach ($barangmasuk as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->kode_barang }}</td>
-                                            <td>{{ $data->nama_barang }}</td>
-                                            <td>{{ $data->JenisBarang->nama_jenis_barang ?? "" }}</td>
-                                            <td>{{ $data->BarangMasuk->jumlah_barang ?? ""}}</td>
+                                            <td>{{ TRK-$id_transaksi++ }}</td>
+                                            <td>{{ $data->tanggal_masuk }}</td>
+                                            <td>{{ $data->DataBarang2->kode_barang ?? ""}}</td>
+                                            <td>{{ $data->DataBarang2->nama_barang ?? ""}}</td>
+                                            <td>{{ $data->pengirim }}</td>
+                                            <td>{{ $data->jumlah_barang }}</td>
                                             <td>{{ $data->SatuanBarang->nama_satuan_barang ?? ""}}</td>
 
                                             <td>

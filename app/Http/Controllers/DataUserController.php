@@ -43,11 +43,11 @@ class DataUserController extends Controller
     {
         // validasi
         $validated = $request->validate([
-            'nik' => 'required',
+            'nik' => 'required|min:12',
             'name' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|min:12',
             'username' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'level' => 'required'
         ]);
 
@@ -97,11 +97,11 @@ class DataUserController extends Controller
     {
         // validasi
         $validated = $request->validate([
-            'nik' => 'required',
+            'nik' => 'required|min:12',
             'name' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|min:12',
             'username' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'level' => 'required'
         ]);
 

@@ -41,7 +41,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'Maaf, username atau password anda ada yang salah',
+            'username' => ' ',
             'password' => 'Maaf, username atau password anda ada yang salah',
         ])->onlyInput('username');
     }

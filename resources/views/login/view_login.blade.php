@@ -27,7 +27,8 @@
 <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <h1><b>Sistem Inventaris Barang</b></h1>
+            <img src="{{asset('assets/img/inventory2.png')}}" alt="" style="width: 6rem; height:6rem; margin: 5px 0px">
+            <h3><b>Sistem Inventaris Barang</b></h3>
         </div>
 
         <div class="card-body" >

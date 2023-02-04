@@ -65,9 +65,8 @@
                             <div class="mb-3">
                                 <label class="form-label">Level</label>
                                 <select name="level" id="" class="form-control  @error('level') is-invalid @enderror">
-                                    <option value="1">Super Admin</option>
-                                    <option value="2">Admin</option>
-                                    <option value="3">Karyawan</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Karyawan</option>
                                 </select>
                                 @error('level')
                                     <span class="invalid-feedback" role="alert">

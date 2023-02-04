@@ -52,7 +52,7 @@ class DataBarangController extends Controller
             'kode_barang' => 'required',
             'nama_barang' => 'required',
             'id_jenis_barang' => 'required',
-            'id_jumlah_barang' => 'required',
+            'id_jumlah_barang',
             'id_satuan_barang' => 'required',
         ]);
 
@@ -107,13 +107,14 @@ class DataBarangController extends Controller
             'kode_barang' => 'required',
             'nama_barang' => 'required',
             'id_jenis_barang' => 'required',
-            'id_jumlah_barang' => 'required',
+            'id_jumlah_barang',
             'id_satuan_barang' => 'required',
         ]);
 
         $databarang = DataBarang::findOrFail($id);
         $jenis = JenisBarang::findOrFail($id);
         $satuan = SatuanBarang::findOrFail($id);
+        $masuk = BarangMasuk::findOrFail($id);
         $databarang->kode_barang = $request->kode_barang;
         $databarang->nama_barang = $request->nama_barang;
         $databarang->id_jenis_barang = $request->id_jenis_barang;

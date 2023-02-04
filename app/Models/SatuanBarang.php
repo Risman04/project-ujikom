@@ -16,4 +16,9 @@ class SatuanBarang extends Model
     {
         return $this->hasMany(DataBarang::class, 'id_satuan_barang');
     }
+
+    public function BarangMasuk()
+    {
+        return $this->hasMany(BarangMasuk::class, 'id_satuan_barang');
+    }
 }

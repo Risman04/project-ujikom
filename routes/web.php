@@ -10,6 +10,7 @@ use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\DataSupplierController;
 use App\Http\Controllers\DataBarangController;
+use App\Http\Controllers\BarangMasukController;
 
 
 /*
@@ -39,33 +40,29 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('logout', 'logout');
 });
 
-//Middleware    
+// Middleware    
 Route::group(['middleware' => ['auth']], function()
 {
-    // Bagian Super Admin 
     Route::group(['middleware' => [CekUserLogin::class]], function()
     {
-        Route::resource('about', LayoutController::class);
+        Route::resource('/home', LayoutController::class);
         //item
-        Route::resource('user', DataUserController::class);
-        Route::resource('databarang', DataBarangController::class);
-        Route::resource('jenis', JenisBarangController::class);
-        Route::resource('satuan', SatuanBarangController::class);
-        Route::resource('supplier', DataSupplierController::class);
-    });
-
-    //Bagian Admin
-    Route::group(['middleware' => [CekUserLogin::class]], function()
-    {
-        Route::resource('about', LayoutController::class);
-        //item
-        Route::resource('user', DataUserController::class);
-        Route::resource('databarang', DataBarangController::class);
-    });
-
-    //Bagian Karyawan
-    Route::group(['middleware' => [CekUserLogin::class]], function()
-    {
-
+        Route::resource('/user', DataUserController::class);
+        Route::resource('/databarang', DataBarangController::class);
+        Route::resource('/jenis', JenisBarangController::class);
+        Route::resource('/satuan', SatuanBarangController::class);
+        Route::resource('/supplier', DataSupplierController::class);
+        Route::resource('/barangmasuk', BarangMasukController::class);
     });
 });
+
+// Route::prefix('/inventory')->middleware(['auth', CekUserLogin::class])->group(function() {
+//     Route::resource('/home', LayoutController::class);
+//         //item
+//         Route::resource('/user', DataUserController::class);
+//         Route::resource('/databarang', DataBarangController::class);
+//         Route::resource('/jenis', JenisBarangController::class);
+//         Route::resource('/satuan', SatuanBarangController::class);
+//         Route::resource('/supplier', DataSupplierController::class);
+//         Route::resource('/barangmasuk', BarangMasukController::class);
+// });

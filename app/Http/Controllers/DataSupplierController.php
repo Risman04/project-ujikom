@@ -45,7 +45,7 @@ class DataSupplierController extends Controller
             'kode_supplier' => 'required',
             'nama_supplier' => 'required',
             'alamat' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|min:12',
         ]);
 
         $supplier = new DataSupplier();
@@ -95,7 +95,7 @@ class DataSupplierController extends Controller
             'kode_supplier' => 'required',
             'nama_supplier' => 'required',
             'alamat' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|min:12',
         ]);
 
         $supplier = DataSupplier::findOrFail($id);

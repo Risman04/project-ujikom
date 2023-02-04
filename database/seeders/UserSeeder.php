@@ -16,34 +16,24 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //Seed Super Admin
-        $super = new \App\Models\User();
-        $super -> nik = "000001";
-        $super -> name = "Super Admin";
-        $super -> telepon = "10101010";
-        $super -> username = "superadmin";
-        $super -> password=bcrypt("userke1");
-        $super -> level = "1";
-        $super->save();
-
         //Seed Admin
         $admin = new \App\Models\User();
-        $admin -> nik = "000002";
+        $admin -> nik = "000001";
         $admin -> name = "Admin";
-        $admin -> telepon = "20202020";
+        $admin -> telepon = "101010101";
         $admin -> username = "admin";
-        $admin -> password=bcrypt("userke2");
-        $admin -> level = "2";
+        $admin -> password=bcrypt("userke1");
+        $admin -> level = "1";
         $admin->save();
 
         //Seed Karyawan
         $karyawan = new \App\Models\User();
-        $karyawan -> nik = "000003";
+        $karyawan -> nik = "000002";
         $karyawan -> name = "Karyawan";
-        $karyawan -> telepon = "30303030";
+        $karyawan -> telepon = "202020202";
         $karyawan -> username = "karyawan";
-        $karyawan -> password=bcrypt("userke3");
-        $karyawan -> level = "3";
+        $karyawan -> password=bcrypt("userke2");
+        $karyawan -> level = "2";
         $karyawan->save();
     }
 }

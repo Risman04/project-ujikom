@@ -47,9 +47,9 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Jumlah Barang</label>
-                                <input type="number" class="form-control  @error('jumlah_barang') is-invalid @enderror"
-                                    name="jumlah_barang">
-                                @error('jumlah_barang')
+                                <input type="text" class="form-control  @error('id_jumlah_barang') is-invalid @enderror"
+                                    name="id_jumlah_barang" value="$barangmasuk->jumlah_barang" readonly>
+                                @error('id_jumlah_barang')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
