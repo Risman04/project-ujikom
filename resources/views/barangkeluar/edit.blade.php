@@ -3,30 +3,21 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Data Barang Masuk
+                        Data Barang
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('barangmasuk.store') }}" method="post">
+                        <form action="{{ route('barangkeluar.update', $barangkeluar->id) }}" method="post">
                             @csrf
+                            @method('put')
                             <div class="mb-3">
-                                <label class="form-label">Id Transaksi</label>
-                                <input type="text" class="form-control  @error('id_transaksi') is-invalid @enderror"
-                                    name="id_transaksi" id="kode" value="{{$kode}}" readonly>
-                                @error('id_transaksi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Tanggal Masuk</label>
-                                <input type="date" class="form-control  @error('tanggal_masuk') is-invalid @enderror"
-                                    name="tanggal_masuk">
-                                @error('tanggal_masuk')
+                                <label class="form-label">Tanggal Keluar</label>
+                                <input type="date" class="form-control  @error('tanggal_keluar') is-invalid @enderror"
+                                    name="tanggal_keluar">
+                                @error('tanggal_keluar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -36,7 +27,7 @@
                                 <label class="form-label">Nama Barang</label>
                                 <select name="id_data_barang" class="form-control @error('id_data_barang') is-invalid @enderror" id="">
                                     @foreach($databarang as $data)
-                                        <option value="{{ $data->id }}">{{ $data->kode_barang }} | {{ $data->nama_barang }}</option>
+                                        <option value="{{ $data->id }}">{{ $data->kode_barang | $data->nama_barang }}</option>
                                     @endforeach
                                 @error('id_data_barang')
                                 <span class="invalid-feedback" role="alert">
@@ -46,22 +37,9 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Pengirim</label>
-                                <select name="id_supplier" class="form-control @error('id_supplier') is-invalid @enderror" id="">
-                                    @foreach($supplier as $data)
-                                        <option value="{{ $data->id }}">{{ $data->nama_supplier }}</option>
-                                    @endforeach
-                                @error('id_supplier')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                                </select>
-                            </div>
-                            <div class="mb-3">
                                 <label class="form-label">Jumlah Barang</label>
                                 <input type="number" class="form-control  @error('jumlah_barang') is-invalid @enderror"
-                                    name="jumlah_barang">
+                                    name="jumlah_barang" value="{{ $barangkeluar->jumlah_barang }}">
                                 @error('jumlah_barang')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -80,6 +58,16 @@
                                 </span>
                                 @enderror
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Tujuan</label>
+                                <input type="number" class="form-control  @error('alamat') is-invalid @enderror"
+                                    name="alamat" value="{{ $baangkeluar->alamat }}">
+                                @error('alamat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <div class="d-grid gap-2">

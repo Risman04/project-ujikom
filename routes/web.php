@@ -11,6 +11,8 @@ use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\DataSupplierController;
 use App\Http\Controllers\DataBarangController;
 use App\Http\Controllers\BarangMasukController;
+use App\Http\Controllers\BarangKeluarController;
+
 
 
 /*
@@ -40,7 +42,7 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('logout', 'logout');
 });
 
-// Middleware    
+// Middleware
 Route::group(['middleware' => ['auth']], function()
 {
     Route::group(['middleware' => [CekUserLogin::class]], function()
@@ -53,6 +55,8 @@ Route::group(['middleware' => ['auth']], function()
         Route::resource('/satuan', SatuanBarangController::class);
         Route::resource('/supplier', DataSupplierController::class);
         Route::resource('/barangmasuk', BarangMasukController::class);
+        Route::resource('/barangkeluar', BarangKeluarController::class);
+
     });
 });
 
