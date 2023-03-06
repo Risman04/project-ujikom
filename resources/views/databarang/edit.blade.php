@@ -47,17 +47,17 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Jumlah Barang</label>
-                                <select name="id_jumlah_barang" class="form-control @error('id_jumlah_barang') is-invalid @enderror" id="">
-                                    @foreach($masuk as $data)
-                                        <option value="{{ $data->id }}">{{ $data->jumlah_barang }}</option>
-                                    @endforeach
-                                @error('id_jumlah_barang')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <label class="form-label">Nama Barang</label>
+                                <input type="text" class="form-control  @error('nama_barang') is-invalid @enderror"
+                                    name="nama_barang" @foreach($masuk as $data)
+                                    value="{{ $data->jumlah_barang }}"
+                                @endforeach readonly>
+                                @error('nama_barang')
+
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
-                                </select>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Satuan</label>

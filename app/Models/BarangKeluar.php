@@ -29,7 +29,7 @@ class BarangKeluar extends Model
 
     public static function kode()
     {
-        $kode = DB::table('barang_masuks')->max('id_transaksi');
+        $kode = DB::table('barang_keluars')->max('id_transaksi');
         $addNol = '';
         $kode = str_replace("TRK-", "", $kode);
         $kode = (int) $kode + 1;

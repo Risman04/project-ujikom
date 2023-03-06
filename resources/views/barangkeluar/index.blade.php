@@ -38,7 +38,7 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $data->id_transaksi }}</td>
                                             <td>{{ $data->tanggal_keluar }}</td>
-                                            <td>{{ $data->barangkeluar2->kode_barang ?? ""}}</td>
+                                            <td>{{ $data->DataBarang2->kode_barang ?? ""}}</td>
                                             <td>{{ $data->DataBarang2->nama_barang ?? ""}}</td>
                                             <td>{{ $data->jumlah_barang }}</td>
                                             <td>{{ $data->SatuanBarang->nama_satuan_barang ?? ""}}</td>

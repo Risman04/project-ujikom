@@ -50,15 +50,6 @@
                   </a>
                   <ul class="nav nav-treeview">
                     {{-- Menu Pilihan --}}
-                    <li class="nav-item">
-                      <a href="{{ route('databarang.index') }}" class="nav-link">
-                        <i class="fa fa-clipboard-check"></i>
-                          <p style="margin-left: 10px">
-                              Data Barang
-                              {{-- <i class="right fas fa-angle-left"></i> --}}
-                          </p>
-                      </a>
-                    </li>
                       <li class="nav-item">
                           <a href="{{ route('jenis.index') }}" class="nav-link">
                             <i class="fa fa-clipboard-check"></i>
@@ -86,6 +77,15 @@
                             </p>
                         </a>
                       </li>
+                      <li class="nav-item">
+                      <a href="{{ route('databarang.index') }}" class="nav-link">
+                        <i class="fa fa-clipboard-check"></i>
+                          <p style="margin-left: 10px">
+                              Data Barang
+                              {{-- <i class="right fas fa-angle-left"></i> --}}
+                          </p>
+                      </a>
+                    </li>
                   </ul>
                 </li>  
                 <li class="nav-item menu-open">
@@ -103,6 +103,18 @@
                         <i class="fa fa-clipboard-check"></i>
                           <p style="margin-left: 10px">
                               Barang Masuk
+                              {{-- <i class="right fas fa-angle-left"></i> --}}
+                          </p>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="nav nav-treeview">
+                    {{-- Menu Pilihan --}}
+                    <li class="nav-item">
+                      <a href="{{ route('barangkeluar.index') }}" class="nav-link">
+                        <i class="fa fa-clipboard-check"></i>
+                          <p style="margin-left: 10px">
+                              Barang Keluar
                               {{-- <i class="right fas fa-angle-left"></i> --}}
                           </p>
                       </a>
@@ -131,15 +143,6 @@
                 </a>
                 <ul class="nav nav-treeview">
                   {{-- Menu Pilihan --}}
-                  <li class="nav-item">
-                    <a href="{{ route('databarang.index') }}" class="nav-link">
-                      <i class="fa fa-clipboard-check"></i>
-                        <p style="margin-left: 10px">
-                            Data Barang
-                            {{-- <i class="right fas fa-angle-left"></i> --}}
-                        </p>
-                    </a>
-                  </li>
                     <li class="nav-item">
                         <a href="{{ route('jenis.index') }}" class="nav-link">
                           <i class="fa fa-clipboard-check"></i>
@@ -167,6 +170,15 @@
                           </p>
                       </a>
                     </li>
+                    <li class="nav-item">
+                    <a href="{{ route('databarang.index') }}" class="nav-link">
+                      <i class="fa fa-clipboard-check"></i>
+                        <p style="margin-left: 10px">
+                            Data Barang
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                        </p>
+                    </a>
+                  </li>
                 </ul>
               </li>  
               <li class="nav-item menu-open">
@@ -198,6 +210,18 @@
                     </a>
                   </li>
                 </ul>
+                <ul class="nav nav-treeview">
+                    {{-- Menu Pilihan --}}
+                    <li class="nav-item">
+                      <a href="{{ route('barangkeluar.index') }}" class="nav-link">
+                        <i class="fa fa-clipboard-check"></i>
+                          <p style="margin-left: 10px">
+                              Barang Keluar
+                              {{-- <i class="right fas fa-angle-left"></i> --}}
+                          </p>
+                      </a>
+                    </li>
+                  </ul>
               </li>
                 @endif
             </ul>

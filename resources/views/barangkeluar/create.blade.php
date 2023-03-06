@@ -70,7 +70,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Tujuan</label>
-                                <input type="number" class="form-control  @error('alamat') is-invalid @enderror"
+                                <input type="text" class="form-control  @error('alamat') is-invalid @enderror"
                                     name="alamat">
                                 @error('alamat')
                                     <span class="invalid-feedback" role="alert">

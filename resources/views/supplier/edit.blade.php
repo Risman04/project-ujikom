@@ -15,7 +15,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Kode Supplier</label>
                                 <input type="text" class="form-control  @error('kode_supplier') is-invalid @enderror"
-                                    name="kode_supplier" value="{{ $supplier->kode_supplier }}">
+                                    name="kode_supplier" value="{{ $kode }}" readonly>
                                 @error('kode_supplier')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -30,12 +30,17 @@
                                 <tbody>
                                     @php $no = 1; @endphp
                                     @foreach ($databarang as $data)
+                                    @php
+                                        $barangMasuk = \App\Models\BarangMasuk::where('id_jumlah_barang', $data->id)->sum('jumlah_barang');
+                                        $barangKeluar = \App\Models\BarangKeluar::where('id_jumlah_barang', $data->id)->sum('jumlah_barang');
+                                        $jumlahBarang = $barangMasuk - $barangKeluar;
+                                    @endphp
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $data->kode_barang }}</td>
                                             <td>{{ $data->nama_barang }}</td>
                                             <td>{{ $data->JenisBarang->nama_jenis_barang ?? "" }}</td>
-                                            <td>{{ $data->BarangMasuk->jumlah_barang ?? ""}}</td>
+                                            <td>{{ $jumlahBarang }}</td>
                                             <td>{{ $data->SatuanBarang->nama_satuan_barang ?? ""}}</td>
 
                                             <td>

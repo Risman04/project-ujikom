@@ -19,8 +19,8 @@ class DataUserController extends Controller
      */
     public function index()
     {
-        $user= User::all();
-        return view('user.index' , compact('user'));
+        $user= User::where('level', '2')->get();
+        return view('user.index',['active' => 'user'], compact('user'));
     }
 
     /**

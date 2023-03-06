@@ -7,6 +7,7 @@ use App\Models\DataBarang;
 use App\Models\JenisBarang;
 use App\Models\SatuanBarang;
 use App\Models\BarangMasuk;
+use Session;
 
 
 class DataBarangController extends Controller
@@ -33,10 +34,11 @@ class DataBarangController extends Controller
      */
     public function create()
     {
+        $kode = DataBarang::kode();
         $jenis = JenisBarang::all();
         $satuan = SatuanBarang::all();
         $masuk = BarangMasuk::all();
-        return view('databarang.create', compact('jenis', 'satuan', 'masuk'));
+        return view('databarang.create', compact('kode', 'jenis', 'satuan', 'masuk'));
     }
 
     /**
@@ -52,7 +54,7 @@ class DataBarangController extends Controller
             'kode_barang' => 'required',
             'nama_barang' => 'required',
             'id_jenis_barang' => 'required',
-            'id_jumlah_barang',
+            'id_jumlah_barang' => 'required',
             'id_satuan_barang' => 'required',
         ]);
 
@@ -87,10 +89,11 @@ class DataBarangController extends Controller
     public function edit($id)
     {
         $databarang = DataBarang::findOrFail($id);
+        $kode = DataBarang::kode();
         $jenis = JenisBarang::all();
         $satuan = SatuanBarang::all();
         $masuk = BarangMasuk::all();
-        return view('databarang.edit', compact('databarang', 'jenis', 'satuan', 'masuk'));
+        return view('databarang.edit', compact('kode', 'databarang', 'jenis', 'satuan', 'masuk'));
     }
 
     /**
@@ -107,7 +110,7 @@ class DataBarangController extends Controller
             'kode_barang' => 'required',
             'nama_barang' => 'required',
             'id_jenis_barang' => 'required',
-            'id_jumlah_barang',
+            'id_jumlah_barang' => 'required',
             'id_satuan_barang' => 'required',
         ]);
 

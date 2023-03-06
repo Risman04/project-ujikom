@@ -120,7 +120,7 @@ Halaman Home
     <div class="card-body">
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">
-         <a  href=""> <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><h4>Barang Keluar</h4></div>
+         <a  href="{{ route('barangkeluar.index')}}"> <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><h4>Barang Keluar</h4></div>
 
         </div>
         <div class="col-auto">

@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('id_transaksi');
             $table->date('tanggal_masuk');
             $table->unsignedBigInteger('id_data_barang');
-            $table->string('pengirim');
+            $table->unsignedBigInteger('id_supplier');
             $table->integer('jumlah_barang');
             $table->unsignedBigInteger('id_satuan_barang');
             
+            $table->foreign('id_supplier')->references('id')->on('data_suppliers')
+            ->onDelete('cascade');
             $table->foreign('id_satuan_barang')->references('id')->on('satuan_barangs')
             ->onDelete('cascade');
             $table->foreign('id_data_barang')->references('id')->on('data_barangs')

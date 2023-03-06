@@ -14,8 +14,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Kode Barang</label>
-                                <input type="text" class="form-control  @error('kode_barang') is-invalid @enderror"
-                                    name="kode_barang">
+                                <input type="text" class="form-control boxed @error('kode_barang') is-invalid @enderror"
+                                    name="kode_barang" id="kode" value="{{ $kode }}" readonly>
                                 @error('kode_barang')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,16 +46,6 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Jumlah Barang</label>
-                                <input type="text" class="form-control  @error('id_jumlah_barang') is-invalid @enderror"
-                                    name="id_jumlah_barang" value="$barangmasuk->jumlah_barang" readonly>
-                                @error('id_jumlah_barang')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
                                 <label class="form-label">Satuan</label>
                                 <select name="id_satuan_barang" class="form-control @error('id_satuan_barang') is-invalid @enderror" id="">
                                     @foreach($satuan as $data)
@@ -80,3 +70,40 @@
         </div>
     </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+</script>
+<script>
+    $(document).ready(function() {
+        $('#category').on('change', function() {
+            var category_id = $(this).val();
+            if (category_id) {
+                $.ajax({
+                    url: '/admin/getSub_category/' + category_id,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('#sub_category').empty();
+                            $('#sub_category').append(
+                                '<option hidden>Pilih Sub Kategori</option>');
+                            $.each(data, function(key, sub_category) {
+                                $('select[name="sub_category_id"]').append(
+                                    '<option value="' + sub_category.id + '">' +
+                                    sub_category.name + '</option>');
+                            });
+                        } else {
+                            $('#sub_category').empty();
+                        }
+                    }
+                });
+            } else {
+                $('#sub_category').empty();
+            }
+        });
+    });
+</script>

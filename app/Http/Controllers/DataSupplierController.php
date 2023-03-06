@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataSupplier;
 use Illuminate\Http\Request;
+use Session;
 
 class DataSupplierController extends Controller
 {
@@ -29,7 +30,9 @@ class DataSupplierController extends Controller
      */
     public function create()
     {
-        return view('supplier.create');
+        $kode = DataSupplier::kode();
+        $supplier = DataSupplier::all();
+        return view('supplier.create' , compact('kode', 'supplier'));
     }
 
     /**
@@ -78,7 +81,8 @@ class DataSupplierController extends Controller
     public function edit($id)
     {
         $supplier = DataSupplier::findOrFail($id);
-        return view('supplier.edit', compact('supplier'));
+        $kode= DataSupplier::kode();
+        return view('supplier.edit', compact('kode', 'supplier'));
     }
 
     /**

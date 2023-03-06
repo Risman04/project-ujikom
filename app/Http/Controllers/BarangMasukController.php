@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\BarangMasuk;
 use App\Models\DataBarang;
 use App\Models\SatuanBarang;
+use App\Models\DataSupplier;
 use Illuminate\Http\Request;
+use Session;
 
 
 class BarangMasukController extends Controller
@@ -32,9 +34,11 @@ class BarangMasukController extends Controller
      */
     public function create()
     {
+        $kode = BarangMasuk::kode();
+        $supplier = DataSupplier::all();
         $databarang = DataBarang::all();
         $satuan = SatuanBarang::all();
-        return view('barangmasuk.create', compact('databarang', 'satuan'));
+        return view('barangmasuk.create', compact('kode', 'databarang', 'satuan', 'supplier'));
     }
 
     /**
@@ -50,7 +54,7 @@ class BarangMasukController extends Controller
             'id_transaksi' => 'required',
             'tanggal_masuk' => 'required',
             'id_data_barang' => 'required',
-            'pengirim' => 'required',
+            'id_supplier' => 'required',
             'jumlah_barang' => 'required',
             'id_satuan_barang' => 'required'
         ]);
@@ -59,7 +63,7 @@ class BarangMasukController extends Controller
         $barangmasuk->id_transaksi = $request->id_transaksi;
         $barangmasuk->tanggal_masuk = $request->tanggal_masuk;
         $barangmasuk->id_data_barang = $request->id_data_barang;
-        $barangmasuk->pengirim = $request->pengirim;
+        $barangmasuk->id_supplier = $request->id_supplier;
         $barangmasuk->jumlah_barang = $request->jumlah_barang;
         $barangmasuk->id_satuan_barang = $request->id_satuan_barang;
         $barangmasuk->save();
@@ -84,12 +88,14 @@ class BarangMasukController extends Controller
      * @param  \App\Models\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangMasuk $barangMasuk)
+    public function edit($id)
     {
+        $kode = BarangMasuk::kode();
         $barangmasuk = BarangMasuk::findOrFail($id);
         $databarang = DataBarang::all();
+        $supplier = DataSupplier::all();
         $satuan = SatuanBarang::all();
-        return view('databarang.edit', compact('databarang', 'satuan', 'barangmasuk'));
+        return view('databarang.edit', compact('kode','databarang', 'satuan', 'barangmasuk', 'supplier'));
     }
 
     /**
@@ -99,14 +105,14 @@ class BarangMasukController extends Controller
      * @param  \App\Models\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangMasuk $barangMasuk)
+    public function update(Request $request, $id)
     {
         // validasi
         $validated = $request->validate([
             'id_transaksi' => 'required',
             'tanggal_masuk' => 'required',
             'id_data_barang' => 'required',
-            'pengirim' => 'required',
+            'id_supplier' => 'required',
             'jumlah_barang' => 'required',
             'id_satuan_barang' => 'required'
         ]);
@@ -114,10 +120,11 @@ class BarangMasukController extends Controller
         $barangmasuk = BarangMasuk::findOrFail($id);
         $databarang = DataBarang::findOrFail($id);
         $satuan = SatuanBarang::findOrFail($id);
+        $supplier = DataSupplier::findOrFail($id);
         $barangmasuk->id_transaksi = $request->id_transaksi;
         $barangmasuk->tanggal_masuk = $request->tanggal_masuk;
         $barangmasuk->id_data_barang = $request->id_data_barang;
-        $barangmasuk->pengirim = $request->pengirim;
+        $barangmasuk->id_supplier = $request->id_supplier;
         $barangmasuk->jumlah_barang = $request->jumlah_barang;
         $barangmasuk->id_satuan_barang = $request->id_satuan_barang;
         $barangmasuk->save();
@@ -131,7 +138,7 @@ class BarangMasukController extends Controller
      * @param  \App\Models\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangMasuk $barangMasuk)
+    public function destroy($id)
     {
         $barangmasuk = BarangMasuk::findOrFail($id);
         $barangmasuk->delete();
